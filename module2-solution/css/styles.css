@@ -29,7 +29,7 @@ section > p {
     color: black;
     clear: right;
     background-color: blue;
-    overflow: scroll;
+    overflow: hidden;
     margin-left: auto;
     margin-right: auto;
     padding: 3%;
@@ -37,6 +37,7 @@ section > p {
 
 section > p:hover{
     cursor: s-resize;
+    overflow-y: scroll;
 }
 
 div > p {
