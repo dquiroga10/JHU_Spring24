@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#header-nav {
+    background-color: blue;
+    border-radius: 0;
+    border: 0;
+}
+
+.navbar-default{
+    height: fit-content;
+}
+
+.navbar-brand h1{
+    color:white;
+    text-transform: uppercase;
+}
+
+.navbar-brand a:hover navbar-brand a:focus{
+    text-decoration: none;
+}
+
+.navbar {
+    min-height: 90px;
+}
+
+#nav-list {
+    margin-top: 20px;
+}
+#nav-list a {
+    color: #951C49;
+    text-align: center;
+}
+#nav-list a:hover {
+    background: #e7e7e7;
+}
+#nav-list a span {
+    font-size: 1.8em;
+}
+
+#navbar-toggle {
+    background-color: white;
+}
+
+#navbar-toggle {
+    background-color: chartreuse;
+    width: 100%;
+}
