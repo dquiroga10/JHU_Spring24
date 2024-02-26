@@ -22,6 +22,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
     "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/";
   var menuItemsTitleHtml = "snippets/menu-items-title.html";
   var menuItemHtml = "snippets/menu-item.html";
+  var aboutHtmlUrl = "snippets/about.html";
 
   // Convenience function for inserting innerHTML for 'select'
   var insertHtml = function (selector, html) {
@@ -155,6 +156,32 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
       menuItemsUrl + categoryShort + ".json",
       buildAndShowMenuItemsHTML);
   };
+
+  // Load the about page view
+  dc.loadAboutPage = function () {
+    showLoading("#main-content");
+    $ajaxUtils.sendGetRequest(
+      aboutHtmlUrl,
+      function (aboutHtml) {
+        var randomRating = Math.random() * 5;
+        randomRating = Math.floor(randomRating + 1);
+        for(var i = 1; i <= 5; i++){
+          // This is for stars that are populated
+          if(i <= randomRating){
+            aboutHtml = insertProperty(aboutHtml, `class${i}`, "fa fa-star");
+          }
+          // This is for stars that are not populated
+          else {
+            aboutHtml = insertProperty(aboutHtml, `class${i}`, "fa fa-star-o");
+          }
+          
+        }
+        aboutHtml = insertProperty(aboutHtml, "ratingNumber", randomRating);
+        insertHtml("#main-content", aboutHtml);
+      },
+      false
+    )
+  }
 
 
   // Builds HTML for the categories page based on the data
