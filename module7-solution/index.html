@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>Shopping List Tracker</h1>
+
+    <h2>To Buy:</h2>
+    <div ng-controller='ToBuyController as showToBuyList'>
+      <ol>
+        <li ng-repeat="item in showToBuyList.items">
+          Buy <input type="text" ng-model="item.quantity" placeholder="item.quantity"></input> of {{ item.name }} {{ item.name }}
+          <button ng-click="showToBuyList.buyItem($index);">Buy Now!</button>
+        </li>
+      </ol>
+      <div ng-if="showToBuyList.items == 0">Everything is bought!</div>
+    </div>
+
+    <h2>Bought:</h2>
+    <div ng-controller='AlreadyBoughtController as showBoughtList'>
+      <ol>
+        <li ng-repeat="item in showBoughtList.items">
+          Bought {{ item.quantity }} {{ item.name }} for total price of {{ showBoughtList.getTotalPrice(item.quantity, item.pricePerItem) | ShoppingListTotalPrice  }}
+        </li>
+      </ol>
+      <div ng-if="showBoughtList.items == 0">Nothing bought yet</div>
+    </div>
+
+    </div>
+
+  </body>
+</html>
