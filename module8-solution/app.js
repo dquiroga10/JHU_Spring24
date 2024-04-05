@@ -4,7 +4,25 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
+.directive('foundItems', FoundItemsDirective)
 .constant('ApiBasePath', "https://coursera-jhu-default-rtdb.firebaseio.com");
+
+function FoundItemsDirective() {
+  console.log("gets here")
+  var ddo = {
+    templateUrl: 'foundItems.html',
+    scope: {
+      found: '<',
+      onRemove: '&'
+    },
+    controller: NarrowItDownController,
+    controllerAs: 'narrowItDown',
+    bindToController: true
+  };
+  console.log(ddo);
+
+  return ddo;
+}
 
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
@@ -20,6 +38,10 @@ function NarrowItDownController(MenuSearchService) {
       narrowItDown.found = response;
     });
   }
+
+  narrowItDown.removeItem = function (itemIndex) {
+    narrowItDown.found.splice(itemIndex, 1);
+  };
 
 }
 

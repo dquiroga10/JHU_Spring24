@@ -20,7 +20,7 @@
     </div>
     <br>
     <h2>Search Results</h2>
-    <div>
+    <!-- <div>
       <ol>
         <li ng-repeat="item in narrowItDown.found">
           Name: {{ item.name }}, 
@@ -28,10 +28,12 @@
           Description: {{ item.description }}
         </li>
       </ol>
-    </div>
+    </div> -->
     
 
-    <found-items found-items="...." on-remove="...."></found-items>
+    <found-items 
+      found="narrowItDown.found" 
+      on-remove="narrowItDown.removeItem(index)"></found-items>
   </div>
 
 </body>

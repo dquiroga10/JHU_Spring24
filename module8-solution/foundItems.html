@@ -1,0 +1,8 @@
+<ol>
+    <li ng-repeat="item in narrowItDown.found">
+      Name: {{ item.name }},
+      Short Name: {{ item.short_name }}, 
+      Description: {{ item.description }}
+      <button ng-click="narrowItDown.onRemove({index: $index});">Remove Item</button>
+    </li>
+  </ol>
