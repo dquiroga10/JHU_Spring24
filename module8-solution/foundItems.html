@@ -1,8 +1,8 @@
 <ol>
-    <li ng-repeat="item in narrowItDown.found">
-      Name: {{ item.name }},
-      Short Name: {{ item.short_name }}, 
-      Description: {{ item.description }}
-      <button ng-click="narrowItDown.onRemove({index: $index});">Remove Item</button>
-    </li>
-  </ol>
+  <li ng-repeat="item in narrowItDown.foundMenuItems">
+    Name: {{ item.name }}, <br>
+    Short Name: {{ item.short_name }},  <br>
+    Description: {{ item.description }} <br>
+    <button ng-click="narrowItDown.onRemove({index: $index});">Don't want this one!</button>
+  </li>
+</ol>

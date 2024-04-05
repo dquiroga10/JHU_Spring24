@@ -19,20 +19,12 @@
       <button class="btn btn-primary" ng-click="narrowItDown.getMatchedMenuItems(search);">Narrow It Down For Me!</button>
     </div>
     <br>
-    <h2>Search Results</h2>
-    <!-- <div>
-      <ol>
-        <li ng-repeat="item in narrowItDown.found">
-          Name: {{ item.name }}, 
-          Short Name: {{ item.short_name }}, 
-          Description: {{ item.description }}
-        </li>
-      </ol>
-    </div> -->
-    
+
+    <h2 ng-if="!(narrowItDown.found == 0)">Search Results</h2>
+    <h2 ng-if="narrowItDown.found == 0">Nothing found</h2>
 
     <found-items 
-      found="narrowItDown.found" 
+      found-menu-items="narrowItDown.found" 
       on-remove="narrowItDown.removeItem(index)"></found-items>
   </div>
 

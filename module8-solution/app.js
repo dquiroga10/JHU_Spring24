@@ -8,18 +8,16 @@ angular.module('NarrowItDownApp', [])
 .constant('ApiBasePath', "https://coursera-jhu-default-rtdb.firebaseio.com");
 
 function FoundItemsDirective() {
-  console.log("gets here")
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
-      found: '<',
+      foundMenuItems: '<',
       onRemove: '&'
     },
     controller: NarrowItDownController,
     controllerAs: 'narrowItDown',
     bindToController: true
   };
-  console.log(ddo);
 
   return ddo;
 }
