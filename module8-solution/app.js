@@ -48,7 +48,6 @@ function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
   service.getMatchedMenuItems = function (searchTerm) {
-    console.log(searchTerm);
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
@@ -68,8 +67,6 @@ function MenuSearchService($http, ApiBasePath) {
           };
         }
       }
-
-      console.log(foundItems);
 
       return foundItems;
     })
