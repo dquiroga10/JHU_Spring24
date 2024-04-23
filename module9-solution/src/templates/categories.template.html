@@ -1,8 +1,14 @@
-<a ui-sref="home">Home</a> &lt; <span>Categories</span>
+<div class="text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" ui-sref="home">Home</button>
+        <button type="button" class="btn btn-info">Categories</button>
+    </div>
+</div>
 
-<ul>
-    <li ng-repeat="category in category.categories"
+<div class="list-group">
+    <a class="list-group-item list-group-item-action text-center"
+        ng-repeat="category in category.categories"
         ui-sref="items({categoryShortName: category.short_name})">
-      <a>{{ category.name }} ({{ category.short_name }})</a>
-    </li>
-</ul>
+      {{ category.name }} ({{ category.short_name }})
+    </a>
+</div>
