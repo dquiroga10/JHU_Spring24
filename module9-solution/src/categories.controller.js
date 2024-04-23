@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('MenuApp')
-.controller('CategoriesController', CategoriesController);
+    .controller('CategoriesController', CategoriesController);
 
 
 CategoriesController.$inject = ['categories'];
