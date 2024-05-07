@@ -12,20 +12,13 @@
       signUpCtrl.validMenuItems = validMenuItems;
 
       signUpCtrl.submit = function (menuItemNumber) {
-        signUpCtrl.completed = false;
-        signUpCtrl.errorMenuItem = false;
         for(const menuItem in signUpCtrl.validMenuItems){
           if (signUpCtrl.validMenuItems[menuItem].shortName.toLowerCase() == menuItemNumber.toLowerCase()){
             MenuService.saveMenuItem(signUpCtrl.validMenuItems[menuItem]);
             signUpCtrl.completed = true;
-            signUpCtrl.errorMenuItem = false;
           }
         }
-        if(!signUpCtrl.completed){
-          signUpCtrl.errorMenuItem = true;
-        }
       };
-
     }
     
 })();
