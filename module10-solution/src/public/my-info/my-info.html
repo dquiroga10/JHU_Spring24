@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="menu-item-tile col-md-6">
+        <span ng-if="infoCtrl.savedMenuItem">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="menu-item-photo">
+                        <div>{{ infoCtrl.savedMenuItem.shortName }}</div>
+                        <img 
+                            class="img-responsive" 
+                            width="250" 
+                            height="150" 
+                            ng-src="images/menu/{{ infoCtrl.savedMenuItem.category }}/{{ infoCtrl.savedMenuItem.shortName }}.jpg" 
+                            alt="{{ infoCtrl.savedMenuItem.title }}">
+                    </div>
+                </div>
+                <div class="menu-item-description col-sm-7">
+                    <h3 class="menu-item-title">{{ infoCtrl.savedMenuItem.title }}</h3>
+                    <p class="menu-item-details">{{ infoCtrl.savedMenuItem.description }}</p>
+                </div>
+            </div>
+        </span>
+        <span ng-if="!(infoCtrl.savedMenuItem)">
+            Not Signed Up Yet. <button type="button" class="btn btn-primary" ui-sref="public.signUp">Sign up Now!</button>
+        </span>
+        <hr class="visible-xs">
+    </div>
+</div>

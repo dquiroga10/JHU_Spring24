@@ -32,23 +32,23 @@ function routeConfig ($stateProvider) {
     })
     .state('public.myInfo', {
       url: '/myInfo',
-      templateUrl: '',
-      controller: '',
-      controllerAs: '',
+      templateUrl: 'src/public/my-info/my-info.html',
+      controller: 'MyInfoController',
+      controllerAs: 'infoCtrl',
       resolve: {
-        menuCategories: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
+        savedMenuItem: ['MenuService', function (MenuService) {
+          return MenuService.getSavedMenuItem();
         }]
       }
     })
     .state('public.signUp', {
       url: '/signUp',
-      templateUrl: '',
-      controller: '',
-      controllerAs: '',
+      templateUrl: 'src/public/sign-up/sign-up.html',
+      controller: 'SignUpController',
+      controllerAs: 'signUpCtrl',
       resolve: {
-        menuCategories: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
+        validMenuItems: ['MenuService', function (MenuService) {
+          return MenuService.getAllMenuItems();
         }]
       }
     })
