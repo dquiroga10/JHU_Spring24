@@ -2,40 +2,31 @@
     "use strict";
     
     angular.module('public')
-        .directive('SignUpDirective', SignUpDirective);
+        .directive('signUpDirective', SignUpDirective);
     
-    SignUpDirective.$inject = ['validMenuItems', 'MenuService'];
-    function SignUpDirective(validMenuItems, MenuService) {
+    SignUpDirective.$inject = ['MenuService'];
+    function SignUpDirective(MenuService) {
         return {
             require: "ngModel",
-            //name your scope key and value.
-            scope: {
-                validateMenuItem: "=validateMenuItem"
-            },
-            link: function(scope, modelVal) {
-        
-                modelVal.$validators.validateMenuItem = function(val) {
-                    //Write your logic or condition in this function
-                   //return false if invalid and return true if valid.
-                    /*
-                    if(condition)
-                    {
-                        //if true
-                        reutrn true;
+
+            link: function(scope, element, attr, signUpCtrl) {
+                function myValidation(inputtedMenuItem) {
+                    var validMenuItems = scope.signUpCtrl.validMenuItems;
+                    var matches = false;
+                    for(const menuItem in validMenuItems){
+                        if (validMenuItems[menuItem].shortName.toLowerCase() == inputtedMenuItem.toLowerCase()){
+                          matches = true;
+                        }
                     }
-                    else{
-                        //if false
-                        return false
+                    if (matches) {
+                        signUpCtrl.$setValidity('menuItemExists', true);
+                    } else {
+                        signUpCtrl.$setValidity('menuItemExists', false);
                     }
-                    */
-                };
-        
-                scope.$watch("validateMenuItem", function() {
-                    modelVal.$validate();
-                });
-        
+                    return inputtedMenuItem;
+                }
+                signUpCtrl.$parsers.push(myValidation);
             }
-        
         };
     }
     

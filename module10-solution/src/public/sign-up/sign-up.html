@@ -2,7 +2,6 @@
     <h2 id="menu-categories-title" class="text-center">Sign up for the newsletter!</h2>
 
     <fieldset>
-        <legend class ="text-light">SignUp</legend>
         <form name='signUpForm' novalidate>
             <input 
                 type="text" 
@@ -13,7 +12,6 @@
                 minlength="4"
                 ng-maxlength="10"
                 class="form-control">
-            {{ signUpCtrl.user.firstName }}
             <span
               ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched">
                 Name must be at least 4 characters long
@@ -32,7 +30,6 @@
                 minlength="4"
                 ng-maxlength="10"
                 class="form-control">
-            {{ signUpCtrl.user.lastName }}
             <span
               ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched">
               Last Name must be at least 4 characters long
@@ -72,6 +69,7 @@
                 placeholder="Enter your favorite menu item number"
                 ng-model="signUpCtrl.user.menuItem"
                 class="form-control"
+                sign-up-directive
                 required>
             <span ng-if="(signUpForm.menuItemNumber.$invalid && signUpForm.menuItemNumber.$touched) || signUpCtrl.errorMenuItem">
                 No such menu number exists
@@ -81,10 +79,6 @@
           <button
             ng-disabled="signUpForm.$invalid"
             ng-click="signUpCtrl.submit(signUpCtrl.user.menuItem)">Submit</button>
-  
-            <div style="margin-top: 10px;">
-              Form valid? {{ signUpForm.$valid }}
-            </div>
         </form>
       </fieldset>
       <div id="info" ng-if="signUpCtrl.completed">
